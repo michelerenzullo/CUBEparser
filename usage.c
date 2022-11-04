@@ -6,10 +6,10 @@ int main() {
 	double* data = NULL;
 
 	//if you don't need the title pass NULL as argument
-	//buffer mode, pass the buffer and 0 as mode, it will be free internally after usage
+	//buffer mode, pass the buffer and 0 as mode, note: it will be modified internally
 	char* buffer = get_file_contents_("test.cube");
 	int32_t result = CUBEParser(buffer, 0, title, &size, &data);
-
+	free(buffer); // free (modified) buffer
 	
 	//standard mode, pass the path to the file and 1 as mode
 	//int32_t result = CUBEParser("test.cube", 1, title, &size, &data);
